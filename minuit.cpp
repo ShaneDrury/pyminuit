@@ -367,7 +367,7 @@ static int minuit_Minuit_init(minuit_Minuit *self, PyObject *args, PyObject *kwd
       Py_DECREF(limit_param);
       Py_DECREF(fix_param);
 
-      self->upar->add(PyString_AsString(param), value, error);
+      self->upar->add(PyBytes_AsString(PyUnicode_AsASCIIString(param)), value, error);  // Fix for python 3
    }
    
    self->myfcn = new MyFCN(self->fcn, self->self, self->npar);
